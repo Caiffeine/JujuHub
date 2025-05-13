@@ -263,6 +263,8 @@
   font-family: var(--font-body);
   font-size: 1rem;
   transition: all var(--transition-normal);
+  background-color: var(--color-white);
+  color: var(--color-text-primary);
 }
 
 .form-group input:focus,
@@ -271,6 +273,27 @@
   border-color: var(--color-pink-300);
   box-shadow: 0 0 0 2px rgba(245, 168, 185, 0.2);
   outline: none;
+}
+
+/* Priority dropdown specific styling */
+#item-priority option {
+  background-color: var(--color-white);
+  color: var(--color-text-primary);
+  padding: 10px;
+  font-size: 1rem;
+}
+
+#item-priority option[value="high"] {
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+#item-priority option[value="medium"] {
+  color: var(--color-text-primary);
+}
+
+#item-priority option[value="low"] {
+  color: var(--color-text-primary);
 }
 
 .form-group textarea {

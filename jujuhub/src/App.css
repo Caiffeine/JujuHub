@@ -1,8 +1,10 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  max-width: 100%; /* Changed from 1280px to ensure full width */
+  margin: 0;
+  padding: 0;
   text-align: center;
+  width: 100%;
+  min-height: 100vh;
 }
 
 .logo {
@@ -48,13 +50,19 @@
 .app-container {
   display: flex;
   min-height: 100vh;
+  width: 100%;
   position: relative;
-  background-color: var(--color-cream);
-  background-image: url('/src/assets/floral-bg.png');
-  background-size: 100%;
+  background-color: var(--color-gray-50);
+  background-image: linear-gradient(
+    135deg,
+    var(--color-lavender-100) 0%,
+    var(--color-pink-100) 50%,
+    var (--color-mint-100) 100%
+  );
+  background-size: cover;
   background-attachment: fixed;
   background-position: center;
-  background-repeat: no-repeat;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .main-content {
@@ -63,6 +71,8 @@
   transition: margin-left var(--transition-normal);
   padding: 1.5rem;
   overflow-y: auto;
+  width: calc(100% - var(--sidebar-width)); /* Ensure proper width calculation */
+  box-sizing: border-box;
 }
 
 .sidebar-collapsed .main-content {
@@ -70,33 +80,37 @@
 }
 
 .page-container {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.85);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  border-radius: var(--border-radius);
+  padding: 2.5rem;
+  background: var(--glass-background);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-md);
-  min-height: calc(100vh - 4rem - var(--header-height));
+  min-height: calc(100vh - 5rem - var(--header-height));
+  border: var(--glass-border);
 }
 
 .page-title {
-  margin-bottom: 2rem;
-  color: var(--color-text-primary);
+  margin-bottom: 2.5rem;
+  color: var(--color-text-heading); /* Use the darker heading color */
   font-family: var(--font-heading);
-  font-weight: 700;
-  border-bottom: 2px solid var(--color-pink-200);
-  padding-bottom: 0.5rem;
+  font-weight: 600;
+  padding-bottom: 0.75rem;
   position: relative;
+  font-size: 2.6rem;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7); /* Add subtle text shadow for better readability */
 }
 
 .page-title::after {
   content: "";
   position: absolute;
-  bottom: -2px;
+  bottom: 0;
   left: 0;
-  width: 100px;
-  height: 2px;
-  background-color: var(--color-pink-400);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, var(--color-pink-400), var(--color-lavender-300));
+  border-radius: 3px;
 }

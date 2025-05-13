@@ -60,11 +60,24 @@ const Diary = () => {
     e.preventDefault();
     
     if (!currentEntry.content.trim()) {
+      let timerInterval;
       Swal.fire({
         title: 'Oops!',
-        text: 'Please write something in your diary',
+        html: 'Please write something in your diary.<br><br>Closing in <b></b> ms.',
         icon: 'warning',
-        confirmButtonColor: '#f5a8b9',
+        timer: 2000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+        didOpen: () => {
+          Swal.showLoading();
+          const timer = Swal.getPopup().querySelector('b');
+          timerInterval = setInterval(() => {
+            timer.textContent = `${Swal.getTimerLeft()}`;
+          }, 100);
+        },
+        willClose: () => {
+          clearInterval(timerInterval);
+        }
       });
       return;
     }

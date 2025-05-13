@@ -4,8 +4,18 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JujuHub - Your Personal Space</title>
+    <title>Juju's Hub</title>
     <meta name="description" content="A beautiful personal hub with garden-coquette aesthetic">
+    <script>
+      // Prevent scroll position restoration on page refresh
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      // Reset scroll position on page load
+      window.onload = function() {
+        window.scrollTo(0, 0);
+      };
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -23,10 +23,11 @@
   font-family: var(--font-heading);
   font-size: 2.8rem;
   margin-bottom: 0.5rem;
-  background: linear-gradient(45deg, var(--color-pink-400), var(--color-lavender-300));
+  background: linear-gradient(45deg, #f8a6b4, #f3a2b6); /* Darker pastel pink gradient */
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
 }
 
 .current-date {
@@ -103,14 +104,29 @@
 .dashboard-calendar .react-calendar__tile {
   font-family: var(--font-body);
   border-radius: 8px;
+  color: #2d2d2d; /* Make all date numbers visible and dark */
+  background: transparent;
+  font-weight: 500;
 }
 
 .dashboard-calendar .react-calendar__tile--active {
   background-color: var(--color-pink-300);
+  color: #fff;
 }
 
 .dashboard-calendar .react-calendar__tile--now {
   background-color: var(--color-lavender-100);
+  color: #2d2d2d;
+}
+
+.dashboard-calendar .react-calendar__month-view__days__day--weekend {
+  color: #ff6b81;
+}
+
+.dashboard-calendar .react-calendar__tile:disabled {
+  color: #ccc;
+  background: none;
+  opacity: 0.6;
 }
 
 .quote-card {

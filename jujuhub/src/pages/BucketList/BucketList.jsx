@@ -36,8 +36,8 @@ const useBucketListStore = create((set) => ({
       const updatedItems = state.items.map(item => {
         if (item.id === id) {
           // If completion status is being updated, set completedAt
-          const completedAt = 
-            (updatedData.completed === true && !item.completed) 
+          const completedAt 
+            = (updatedData.completed === true && !item.completed) 
               ? new Date().toISOString() 
               : (updatedData.completed === false ? null : item.completedAt);
           
@@ -148,11 +148,24 @@ const BucketList = () => {
     e.preventDefault();
     
     if (!currentItem.title.trim()) {
+      let timerInterval;
       Swal.fire({
         title: 'Oops!',
-        text: 'Please enter a title for your bucket list item',
+        html: 'Please enter a title for your bucket list item.<br><br>Closing in <b></b> ms.',
         icon: 'warning',
-        confirmButtonColor: '#f5a8b9',
+        timer: 2000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+        didOpen: () => {
+          Swal.showLoading();
+          const timer = Swal.getPopup().querySelector('b');
+          timerInterval = setInterval(() => {
+            timer.textContent = `${Swal.getTimerLeft()}`;
+          }, 100);
+        },
+        willClose: () => {
+          clearInterval(timerInterval);
+        }
       });
       return;
     }

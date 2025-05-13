@@ -9,21 +9,24 @@ import Watchlist from './pages/Watchlist/Watchlist'
 import BucketList from './pages/BucketList/BucketList'
 import RelationshipCorner from './pages/RelationshipCorner/RelationshipCorner'
 import './App.css'
+import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<Dashboard />} />
-        <Route path="notes" element={<Notes />} />
-        <Route path="diary" element={<Diary />} />
-        <Route path="books" element={<Books />} />
-        <Route path="music" element={<Music />} />
-        <Route path="watchlist" element={<Watchlist />} />
-        <Route path="bucket-list" element={<BucketList />} />
-        <Route path="relationship" element={<RelationshipCorner />} />
-      </Route>
-    </Routes>
+    <ErrorBoundary>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="notes" element={<Notes />} />
+          <Route path="diary" element={<Diary />} />
+          <Route path="books" element={<Books />} />
+          <Route path="music" element={<Music />} />
+          <Route path="watchlist" element={<Watchlist />} />
+          <Route path="bucket-list" element={<BucketList />} />
+          <Route path="relationship" element={<RelationshipCorner />} />
+        </Route>
+      </Routes>
+    </ErrorBoundary>
   )
 }
 

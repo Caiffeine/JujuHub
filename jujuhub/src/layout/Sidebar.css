@@ -9,43 +9,106 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
-                   url('/src/assets/floral-bg-sidebar.png');
-  background-size: cover;
-  background-position: center;
+  background: rgba(255, 255, 255, 0.85); /* Slightly more opaque for better visibility */
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-right: var(--glass-border);
 }
 
 .sidebar-header {
   display: flex;
   align-items: center;
-  padding: 1rem;
+  padding: 1.5rem;
   justify-content: space-between;
   border-bottom: 1px solid var(--color-pink-100);
 }
 
 .sidebar-title {
   margin: 0;
-  font-family: var(--font-handwritten);
-  font-size: 2rem;
-  color: var(--color-pink-400);
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  background: linear-gradient(45deg, var(--color-pink-400), var(--color-lavender-300));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.03em;
 }
 
 .toggle-btn {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-lavender-100);
+  background-color: transparent; /* Remove background */
   border-radius: 50%;
-  color: var(--color-text-primary);
+  color: var(--color-pink-400);
   font-size: 1rem;
   transition: all var(--transition-normal);
+  border: none; /* Remove border */
+  cursor: pointer;
+  position: relative;
+  box-shadow: none; /* Remove any shadow */
+  outline: none; /* Remove the outline */
 }
 
 .toggle-btn:hover {
-  background-color: var(--color-pink-200);
+  background-color: transparent; /* Keep transparent on hover */
   transform: scale(1.1);
+}
+
+.toggle-btn:active {
+  transform: scale(0.95);
+}
+
+.toggle-btn:focus, 
+.toggle-btn:active {
+  outline: none;
+  border: none;
+  box-shadow: none; /* Remove any focus shadow */
+}
+
+/* Remove the focus visible outline in modern browsers */
+.toggle-btn:focus-visible {
+  outline: none;
+}
+
+.heart-icon {
+  color: #ffb3c0; /* Hardcoded pastel pink instead of using CSS variable */
+  font-size: 1.5rem; /* Make heart larger */
+  transition: all var(--transition-normal);
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1)); /* Add subtle shadow to the icon itself */
+}
+
+.heart-icon.collapsed {
+  transform: scale(0.8);
+}
+
+/* Add a cute pulse animation when hovered */
+@keyframes heart-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.toggle-btn:hover .heart-icon {
+  animation: heart-pulse 0.8s infinite;
+  color: #ff91a4; /* Darker pink on hover */
+}
+
+/* More specific selector to ensure it overrides any other styles */
+.sidebar .toggle-btn .heart-icon {
+  color: #ffb3c0 !important; /* Use !important to override any other styles */
+  fill: #ffb3c0 !important; /* For SVG elements, fill property may be needed */
+  font-size: 1.5rem;
+  transition: all var(--transition-normal);
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1));
+}
+
+.sidebar .toggle-btn:hover .heart-icon {
+  animation: heart-pulse 0.8s infinite;
+  color: #ff91a4 !important;
+  fill: #ff91a4 !important;
 }
 
 .sidebar-content {
@@ -63,49 +126,54 @@
 .nav-link {
   display: flex;
   align-items: center;
-  padding: 0.75rem 1.5rem;
+  padding: 0.85rem 1.5rem;
   color: var(--color-text-primary);
   position: relative;
   transition: all var(--transition-normal);
   overflow: hidden;
+  border-radius: 12px;
+  margin: 0.25rem 0.75rem;
 }
 
+/* Center icons when sidebar is collapsed */
+.sidebar[data-state="collapsed"] .nav-link {
+  justify-content: center;
+  padding: 0.85rem 0.5rem;
+}
+
+/* Remove the vertical line by commenting out or removing this pseudo-element */
 .nav-link::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background-color: transparent;
-  transition: all var(--transition-normal);
+  display: none; /* Hide the vertical line */
 }
 
 .nav-link:hover {
-  background-color: var(--color-pink-100);
+  background-color: var(--color-pink-200); /* Slightly darker for better visibility */
   color: var(--color-text-primary);
+  transform: translateX(3px); /* Add a slight movement effect */
 }
 
 .nav-link.active {
-  background-color: var(--color-pink-100);
-  color: var(--color-pink-400);
-}
-
-.nav-link.active::before {
-  background-color: var(--color-pink-400);
+  background-color: var(--color-pink-200); /* Darker background for active state */
+  color: var(--color-text-heading); /* Darker text for better visibility */
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Add subtle shadow for depth */
 }
 
 .nav-icon {
   font-size: 1.25rem;
   min-width: 24px;
+  color: var(--color-pink-500); /* Use the new darker pink for icons */
 }
 
 .nav-text {
   margin-left: 1rem;
   font-size: 0.95rem;
   white-space: nowrap;
+  font-weight: 500;
 }
 
+/* Footer styles - currently not in use */
+/*
 .sidebar-footer {
   padding: 1rem;
   border-top: 1px solid var(--color-pink-100);
@@ -115,15 +183,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--color-lavender-100);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin: 0 0.75rem;
 }
 
 .profile-name {
   font-family: var(--font-handwritten);
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
 }
 
 .profile-status {
   font-size: 0.8rem;
   color: var(--color-text-secondary);
 }
+*/

@@ -10,30 +10,31 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-router-dom": "^6.21.3",
-    "framer-motion": "^11.0.3",
     "@dnd-kit/core": "^6.1.0",
     "@dnd-kit/sortable": "^8.0.0",
-    "zustand": "^4.5.0",
-    "uuid": "^9.0.1",
-    "sweetalert2": "^11.10.4",
     "@radix-ui/react-dialog": "^1.0.5",
-    "react-icons": "^5.0.1",
+    "date-fns": "^3.3.1",
+    "framer-motion": "^11.0.3",
     "lucide-react": "^0.323.0",
+    "react": "^19.1.0",
     "react-calendar": "^4.8.0",
-    "date-fns": "^3.3.1"
-  },
-  "devDependencies": {
+    "react-dom": "^19.1.0",
+    "react-icons": "^5.0.1",
+    "react-router-dom": "^6.21.3",
+    "sweetalert2": "^11.10.4",
+    "uuid": "^9.0.1",
+    "zustand": "^4.5.0"
+  },  "devDependencies": {
     "@eslint/js": "^9.25.0",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
+    "postcss": "^8.5.3",
     "vite": "^6.3.5"
   }
 }

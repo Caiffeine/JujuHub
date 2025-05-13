@@ -33,11 +33,24 @@ const Notes = () => {
     e.preventDefault();
     
     if (!currentNote.title.trim() || !currentNote.content.trim()) {
+      let timerInterval;
       Swal.fire({
         title: 'Oops!',
-        text: 'Please fill in both title and content',
+        html: 'Please fill in both title and content.<br><br>Closing in <b></b> ms.',
         icon: 'warning',
-        confirmButtonColor: '#f5a8b9',
+        timer: 2000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+        didOpen: () => {
+          Swal.showLoading();
+          const timer = Swal.getPopup().querySelector('b');
+          timerInterval = setInterval(() => {
+            timer.textContent = `${Swal.getTimerLeft()}`;
+          }, 100);
+        },
+        willClose: () => {
+          clearInterval(timerInterval);
+        }
       });
       return;
     }

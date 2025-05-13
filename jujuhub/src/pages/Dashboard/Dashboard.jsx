@@ -7,8 +7,15 @@ import useNotesStore from '../../store/notesStore';
 import useDiaryStore from '../../store/diaryStore';
 import 'react-calendar/dist/Calendar.css';
 import './Dashboard.css';
+import { preventScrollRestore, resetScroll } from '../../utils/scrollUtils';
 
 const Dashboard = () => {
+  useEffect(() => {
+    // Prevent scroll restoration and reset to top on mount
+    preventScrollRestore();
+    resetScroll();
+  }, []);
+
   const [greeting, setGreeting] = useState('');
   const [date, setDate] = useState(new Date());
   const { notes } = useNotesStore();
@@ -17,9 +24,9 @@ const Dashboard = () => {
   // Set greeting based on time of day
   useEffect(() => {
     const hour = new Date().getHours();
-    if (hour < 12) setGreeting('Good morning');
-    else if (hour < 18) setGreeting('Good afternoon');
-    else setGreeting('Good evening');
+    if (hour < 12) setGreeting('Good Morning');
+    else if (hour < 18) setGreeting('Good Afternoon');
+    else setGreeting('Good Evening');
   }, []);
 
   // Recent items for dashboard
@@ -34,7 +41,7 @@ const Dashboard = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1 className="greeting">{greeting}, love 💕</h1>
+        <h1 className="greeting">{greeting}, Juju!</h1>
         <p className="current-date">{format(new Date(), 'EEEE, MMMM do, yyyy')}</p>
       </motion.div>
 

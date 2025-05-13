@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { FaHome, FaBook, FaMusic, FaHeart, FaListAlt } from 'react-icons/fa'
+import { FaHome, FaBook, FaMusic, FaHeart, FaListAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { MdNotes, MdMovie } from 'react-icons/md'
 import { BsJournalRichtext } from 'react-icons/bs'
 import './Sidebar.css'
@@ -23,6 +23,7 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
       animate={collapsed ? 'collapsed' : 'expanded'}
       variants={sidebarVariants}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
+      data-state={collapsed ? 'collapsed' : 'expanded'}
     >
       <div className="sidebar-header">
         <motion.h1
@@ -31,12 +32,10 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
         >
           JujuHub
         </motion.h1>
-        <button className="toggle-btn" onClick={toggleSidebar}>
-          {collapsed ? '→' : '←'}
+        <button className="toggle-btn" onClick={toggleSidebar} aria-label="Toggle sidebar">
+          <FaHeart className={`heart-icon ${collapsed ? 'collapsed' : ''}`} style={{color: '#ffb3c0'}} />
         </button>
-      </div>
-
-      <div className="sidebar-content">
+      </div>      <div className="sidebar-content">
         <nav className="sidebar-nav">
           <NavLink to="/" className="nav-link" end>
             <FaHome className="nav-icon" />
@@ -78,16 +77,6 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
             <motion.span className="nav-text" variants={linkTextVariants}>Relationship</motion.span>
           </NavLink>
         </nav>
-      </div>
-      
-      <div className="sidebar-footer">
-        <motion.div
-          className="user-profile"
-          variants={linkTextVariants}
-        >
-          <div className="profile-name">Juju</div>
-          <div className="profile-status">Your Happy Place 💕</div>
-        </motion.div>
       </div>
     </motion.aside>
   )
