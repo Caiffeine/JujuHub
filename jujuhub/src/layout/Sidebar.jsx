@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import { FaHome, FaBook, FaMusic, FaHeart, FaListAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { MdNotes, MdMovie } from 'react-icons/md'
 import { BsJournalRichtext } from 'react-icons/bs'

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { FaPlus, FaEdit, FaTrash, FaFilter } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useBooksStore from '../../store/booksStore';

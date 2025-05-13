@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { FaPlus, FaEdit, FaTrash, FaFilter, FaCheck, FaUndo } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import { create } from 'zustand';
@@ -37,8 +37,8 @@ const useWatchlistStore = create((set) => ({
       const updatedItems = state.items.map(item => {
         if (item.id === id) {
           // If watched status is being updated, set watchedAt
-          const watchedAt = 
-            (updatedData.watched === true && !item.watched) 
+          const watchedAt 
+            = (updatedData.watched === true && !item.watched) 
               ? new Date().toISOString() 
               : (updatedData.watched === false ? null : item.watchedAt);
           
@@ -205,7 +205,7 @@ const Watchlist = () => {
     if (!link) return null;
     
     // Handle YouTube URLs
-    const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
     const match = link.match(youtubeRegex);
     
     if (match && match[1]) {

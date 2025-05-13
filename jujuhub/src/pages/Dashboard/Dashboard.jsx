@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { format } from 'date-fns';
 import Calendar from 'react-calendar';
 import { Link } from 'react-router-dom';

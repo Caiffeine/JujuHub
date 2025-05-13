@@ -149,6 +149,7 @@
   background-color: rgba(255, 255, 255, 0.9); /* More opaque for better contrast */
   color: var(--color-text-primary);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
 

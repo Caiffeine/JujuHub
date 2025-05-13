@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { FaPlus, FaEdit, FaTrash, FaHeart } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import { create } from 'zustand';
