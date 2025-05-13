@@ -1,0 +1,264 @@
+.diary-container {
+  padding: 1.5rem;
+}
+
+.diary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.diary-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.date-filter {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.calendar-icon {
+  position: absolute;
+  left: 10px;
+  color: var(--color-text-secondary);
+}
+
+.date-filter input[type="date"] {
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid var(--color-pink-100);
+  border-radius: var(--border-radius);
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+}
+
+.clear-filter {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.diary-empty {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--color-lavender-100);
+  border-radius: var(--border-radius);
+  margin-top: 1rem;
+}
+
+.diary-empty p {
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.diary-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.diary-entry {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.diary-entry:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.entry-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background-color: var(--color-pink-100);
+  position: relative;
+}
+
+.entry-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background-image: url('/src/assets/floral-corner.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  transition: opacity var(--transition-normal);
+}
+
+.diary-entry:hover .entry-header::before {
+  opacity: 0.2;
+}
+
+.entry-date-mood {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.entry-mood {
+  font-size: 1.5rem;
+}
+
+.entry-date {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-text-primary);
+}
+
+.entry-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.entry-action {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  padding: 0.4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-normal);
+}
+
+.entry-action:hover {
+  background-color: white;
+}
+
+.entry-action.edit:hover {
+  color: var(--color-lavender-300);
+}
+
+.entry-action.delete:hover {
+  color: #ff6b6b;
+}
+
+.entry-content {
+  padding: 1.5rem;
+}
+
+.entry-content p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+/* Diary form styles */
+.diary-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mood-selector label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.mood-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.mood-btn {
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid var(--color-pink-100);
+  background-color: white;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.mood-btn:hover {
+  transform: scale(1.1);
+  border-color: var(--color-pink-300);
+}
+
+.mood-btn.selected {
+  border-color: var(--color-pink-400);
+  background-color: var(--color-pink-100);
+  transform: scale(1.1);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.form-group textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-pink-100);
+  border-radius: var(--border-radius);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: all var(--transition-normal);
+  resize: vertical;
+}
+
+.form-group textarea:focus {
+  border-color: var(--color-pink-300);
+  box-shadow: 0 0 0 2px rgba(245, 168, 185, 0.2);
+  outline: none;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .diary-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .diary-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  
+  .date-filter {
+    width: 100%;
+  }
+  
+  .date-filter input[type="date"] {
+    width: 100%;
+  }
+}

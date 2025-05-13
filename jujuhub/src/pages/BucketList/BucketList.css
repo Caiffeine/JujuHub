@@ -1,0 +1,331 @@
+.bucketlist-container {
+  padding: 1.5rem;
+}
+
+.bucketlist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.bucketlist-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.sort-filter-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.sort-dropdown {
+  position: relative;
+  min-width: 180px;
+}
+
+.sort-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-secondary);
+}
+
+.sort-dropdown select {
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid var(--color-pink-100);
+  border-radius: var(--border-radius);
+  background-color: white;
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  width: 100%;
+}
+
+.show-completed-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--color-text-primary);
+}
+
+.show-completed-toggle input {
+  accent-color: var(--color-pink-300);
+  width: 16px;
+  height: 16px;
+}
+
+.bucketlist-empty {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--color-lavender-100);
+  border-radius: var(--border-radius);
+  margin-top: 1rem;
+}
+
+.bucketlist-empty p {
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.bucketlist-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bucket-item {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  border-left: 5px solid var(--color-lavender-200);
+}
+
+.bucket-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.bucket-item.completed {
+  background-color: var(--color-mint-100);
+  border-left-color: var(--color-mint-300);
+  opacity: 0.85;
+}
+
+.item-content {
+  flex: 1;
+}
+
+.item-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.item-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-family: var(--font-heading);
+  color: var(--color-text-primary);
+}
+
+.bucket-item.completed .item-title {
+  text-decoration: line-through;
+  opacity: 0.8;
+}
+
+.priority-badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 20px;
+  color: var(--color-text-primary);
+  background-color: var(--color-pink-100);
+}
+
+.priority-badge.high {
+  background-color: #ffcccc;
+}
+
+.priority-badge.medium {
+  background-color: var(--color-lavender-100);
+}
+
+.priority-badge.low {
+  background-color: var(--color-mint-100);
+}
+
+.item-description {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+.item-duedate {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.completion-badge {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.75rem;
+  background-color: var(--color-mint-200);
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text-primary);
+}
+
+.item-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.complete-toggle {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  background-color: var(--color-pink-200);
+  color: var(--color-text-primary);
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.complete-toggle.complete:hover {
+  background-color: var(--color-mint-200);
+}
+
+.complete-toggle.uncomplete {
+  background-color: var(--color-mint-200);
+}
+
+.complete-toggle.uncomplete:hover {
+  background-color: var(--color-pink-200);
+}
+
+.edit-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.item-action {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  padding: 0.4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-normal);
+}
+
+.item-action:hover {
+  background-color: var(--color-pink-100);
+}
+
+.item-action.edit:hover {
+  color: var(--color-lavender-300);
+}
+
+.item-action.delete:hover {
+  color: #ff6b6b;
+}
+
+/* BucketList form styles */
+.bucketlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-pink-100);
+  border-radius: var(--border-radius);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: all var(--transition-normal);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--color-pink-300);
+  box-shadow: 0 0 0 2px rgba(245, 168, 185, 0.2);
+  outline: none;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.completion-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.completion-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.completion-checkbox input {
+  accent-color: var(--color-mint-300);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .bucketlist-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .bucketlist-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .sort-filter-group {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .bucket-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .item-actions {
+    width: 100%;
+    margin-top: 1rem;
+    justify-content: space-between;
+  }
+}

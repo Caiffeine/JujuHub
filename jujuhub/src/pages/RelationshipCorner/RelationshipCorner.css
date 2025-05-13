@@ -1,0 +1,295 @@
+.relationship-container {
+  padding: 1.5rem;
+}
+
+.relationship-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.memories-empty {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--color-pink-100);
+  border-radius: var(--border-radius);
+  margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.memories-empty::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/src/assets/heart-pattern.png');
+  background-size: 200px;
+  opacity: 0.1;
+}
+
+.memories-empty p {
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.memories-info {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.memories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.memory-card {
+  position: relative;
+  background-color: white;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  max-width: 400px;
+  cursor: grab;
+  margin: 0 auto;
+}
+
+.memory-card:active {
+  cursor: grabbing;
+}
+
+.memory-photo-container {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.memory-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.memory-card:hover .memory-photo {
+  transform: scale(1.05);
+}
+
+.memory-photo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-pink-100), var(--color-pink-200));
+}
+
+.heart-icon {
+  font-size: 4rem;
+  color: white;
+  opacity: 0.7;
+}
+
+.memory-content {
+  padding: 1.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+.memory-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.3rem;
+  font-family: var(--font-heading);
+  color: var(--color-text-primary);
+}
+
+.memory-date {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.memory-caption {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.memory-actions {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.memory-card:hover .memory-actions {
+  opacity: 1;
+}
+
+.memory-action {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: white;
+  color: var(--color-text-primary);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.memory-action:hover {
+  transform: scale(1.1);
+}
+
+.memory-action.edit:hover {
+  background-color: var(--color-lavender-200);
+}
+
+.memory-action.delete:hover {
+  background-color: #ffcccc;
+  color: #ff6b6b;
+}
+
+/* Decorative frame */
+.memory-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  border: 12px solid transparent;
+  border-image: url('/src/assets/frame-border.png') 30 stretch;
+  z-index: 1;
+}
+
+/* Floating hearts animation */
+.floating-hearts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  color: var(--color-pink-300);
+  opacity: 0;
+  animation: float 6s ease-in-out infinite;
+}
+
+.heart1 {
+  font-size: 1.2rem;
+  left: 10%;
+  top: 20%;
+  animation-delay: 0s;
+}
+
+.heart2 {
+  font-size: 1rem;
+  right: 20%;
+  top: 40%;
+  animation-delay: 2s;
+}
+
+.heart3 {
+  font-size: 0.8rem;
+  left: 30%;
+  bottom: 30%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Memory form styles */
+.memory-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-pink-100);
+  border-radius: var(--border-radius);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: all var(--transition-normal);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--color-pink-300);
+  box-shadow: 0 0 0 2px rgba(245, 168, 185, 0.2);
+  outline: none;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .relationship-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .memories-grid {
+    grid-template-columns: 1fr;
+  }
+}

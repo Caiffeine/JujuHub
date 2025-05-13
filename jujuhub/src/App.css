@@ -6,6 +6,10 @@
 }
 
 .logo {
+  display: none;
+}
+
+.logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
@@ -39,4 +43,60 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--color-cream);
+  background-image: url('/src/assets/floral-bg.png');
+  background-size: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  transition: margin-left var(--transition-normal);
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.sidebar-collapsed .main-content {
+  margin-left: var(--sidebar-collapsed-width);
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.85);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  min-height: calc(100vh - 4rem - var(--header-height));
+}
+
+.page-title {
+  margin-bottom: 2rem;
+  color: var(--color-text-primary);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  border-bottom: 2px solid var(--color-pink-200);
+  padding-bottom: 0.5rem;
+  position: relative;
+}
+
+.page-title::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100px;
+  height: 2px;
+  background-color: var(--color-pink-400);
 }
